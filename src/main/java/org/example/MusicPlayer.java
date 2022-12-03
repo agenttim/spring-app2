@@ -1,38 +1,22 @@
 package org.example;
 
+import org.springframework.beans.factory.annotation.Value;
+
+import java.util.List;
+import java.util.Random;
+
 public class MusicPlayer {
-    private Music music;
 
-    private String name;
-    private int volume;
+    private List<Music> music;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
-
-    public MusicPlayer() {}
-
-    public void setMusic(Music music) {
+    public MusicPlayer(List<Music> music) {
         this.music = music;
     }
 
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+        Random random = new Random();
+        int randomNumber = random.nextInt(3);
+        Music genre = music.get(randomNumber);
+        System.out.println(genre.getSong().get(randomNumber));
     }
 }
